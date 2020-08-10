@@ -2,18 +2,18 @@ import React, { useState } from "react";
 
 const api = {
   key: "9d4e70918b6c154edcbece39a609a9c6",
-  base: "https://api.openweathermap.org/data/2.5/"
+  base: "https://api.openweathermap.org/data/2.5/",
 };
 
 function App() {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState({});
 
-  const search = evt => {
+  const search = (evt) => {
     if (evt.key === "Enter") {
       fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-        .then(res => res.json())
-        .then(result => {
+        .then((res) => res.json())
+        .then((result) => {
           setWeather(result);
           setQuery("");
           console.log(result);
@@ -21,7 +21,7 @@ function App() {
     }
   };
 
-  const dateBuilder = d => {
+  const dateBuilder = (d) => {
     let months = [
       "January",
       "February",
@@ -34,7 +34,7 @@ function App() {
       "September",
       "October",
       "November",
-      "December"
+      "December",
     ];
     let days = [
       "Sunday",
@@ -43,7 +43,7 @@ function App() {
       "Wednesday",
       "Thursday",
       "Friday",
-      "Saturday"
+      "Saturday",
     ];
 
     let day = days[d.getDay()];
@@ -76,7 +76,7 @@ function App() {
               type="text"
               className="search-bar"
               placeholder="Search..."
-              onChange={e => setQuery(e.target.value)}
+              onChange={(e) => setQuery(e.target.value)}
               value={query}
               onKeyPress={search}
             />
